@@ -11,5 +11,6 @@ whatsapp_session/
 # Keep only Markdown and Logic
 !/*.md
 !/.agent/
+!/.claude/
 !/watchers/
 !/Templates/
