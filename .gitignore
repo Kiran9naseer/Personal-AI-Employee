@@ -1,0 +1,15 @@
+# Secrets (Never Sync)
+.env
+*.log
+tokens.json
+node_modules/
+__pycache__/
+.DS_Store
+auth/
+whatsapp_session/
+
+# Keep only Markdown and Logic
+!/*.md
+!/.agent/
+!/watchers/
+!/Templates/

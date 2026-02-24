@@ -1,0 +1,217 @@
+{
+  "main": {
+    "id": "4fe1798e7542e058",
+    "type": "split",
+    "children": [
+      {
+        "id": "84eeaebc107802f1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9fc9034f74cef54a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Templates/Template_Plan.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Template_Plan"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a63c49379181e5e9",
+    "type": "split",
+    "children": [
+      {
+        "id": "7c5956e6b1917627",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a819fe1aa39da566",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "96d1aa347218052e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "e128386d23fd16f9",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d8f88ad26a160377",
+    "type": "split",
+    "children": [
+      {
+        "id": "542995ca989f0306",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1c45935c94d3bd31",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Templates/Template_Plan.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Template_Plan"
+            }
+          },
+          {
+            "id": "76377074f728de6f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Templates/Template_Plan.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Template_Plan"
+            }
+          },
+          {
+            "id": "982c4a60ad1b1a94",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "d0310876855f2a78",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "06b486bedaab53c2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Templates/Template_Plan.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Template_Plan"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "a819fe1aa39da566",
+  "lastOpenFiles": [
+    "Inbox/Freelance/Freelance_Job_20260224_235613.md",
+    "Inbox/Freelance/Freelance_Job_20260224_234613.md",
+    "Inbox/Freelance/Freelance_Job_20260224_231939.md",
+    "Inbox/Freelance/Freelance_Job_20260224_230939.md",
+    "Inbox/Freelance/Freelance_Job_20260224_225939.md",
+    "Inbox/Freelance/Freelance_Job_20260224_224939.md",
+    "Implementation_Guide.md",
+    "Inbox/Instagram",
+    "Inbox/Facebook",
+    "Inbox/Twitter",
+    "watchers/__pycache__/whatsapp_alerter.cpython-313.pyc",
+    "watchers/__pycache__",
+    "Inbox/Freelance/Freelance_Job_20260224_224002.md",
+    "Inbox/Freelance/Freelance_Job_20260224_223939.md",
+    "Inbox/Freelance",
+    "watchers/whatsapp_alerter.py",
+    "Needs_Action/Draft_Proposal_RealEstate_AI.md",
+    "watchers/freelance_watcher.py",
+    "Inbox/WhatsApp/LinkedIn_Lead_John_Doe_20260224_014950.md",
+    "Inbox/WhatsApp/LinkedIn_Lead_Sarah_Khan_20260224_014950.md",
+    "Inbox/WhatsApp/LinkedIn_Lead_John_Doe_20260224_014450.md",
+    "Inbox/WhatsApp/LinkedIn_Lead_Sarah_Khan_20260224_014450.md",
+    "Templates/Template_Invoice.md",
+    "Templates/Template_CEO_Briefing.md",
+    "Company_Handbook.md",
+    "Dashboard.md",
+    "Platinum_Strategy.md",
+    "Profile.md"
+  ]
+}
