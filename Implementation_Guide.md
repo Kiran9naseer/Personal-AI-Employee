@@ -1,26 +1,20 @@
-# 🚀 Implementation Guide: Making Your Digital FTE Live
-> **Follow these steps to transition from Simulation to Production.**
+## 🛠️ Step 0: Install Required Libraries
+Open your terminal and run:
+`pip install pywhatkit feedparser requests`
 
-## 1. 📲 Live WhatsApp Alerts
-To get real messages on your mobile, replace the simulation in `watchers/whatsapp_alerter.py` with a real provider:
-- **Option A (Professional):** Create a **Twilio WhatsApp** account. Get your `Account SID` and `Auth Token`.
-- **Option B (Local-Free):** Use the `pywhatkit` library to send messages via your WhatsApp Web session (Requires PC to be on).
+## 1. 📲 Making WhatsApp Mobile Alerts Real
+- Open **WhatsApp Web** on your PC and log in.
+- In `watchers/whatsapp_alerter.py`, the system is ready to use `pywhatkit`. It will automatically use your logged-in browser to send alerts to your mobile.
 
-## 2. 🕵️‍♀️ Real Freelance Monitoring
-Instead of simulated data, connect to real job feeds:
-- Go to Upwork/Freelancer and find the **RSS Feed URL** for your specific job searches (e.g., "AI Developer").
-- Update `watchers/freelance_watcher.py` to fetch data from that URL using the `feedparser` library.
+## 2. 🕵️‍♀️ Connecting Upwork/Freelancer Live
+- Go to Upwork -> Search for Jobs -> Click the **RSS icon** next to the search result.
+- Copy that URL.
+- Open your `.env` file and paste it in `UPWORK_RSS_URL`.
 
-## 3. ☁️ Platinum Cloud Deployment
-To keep it running 24/7:
-- **Buy a cheap VPS** (DigitalOcean or Linode - approx $5/mo).
-- **Setup Git Sync:** Use a private GitHub repo to sync your Obsidian vault between the Cloud (Brain) and your Laptop (Action).
-- **Deployment:** Run `python watchers/freelance_watcher.py` on the server using `pm2` or `systemd` to ensure it never stops.
-
-## 💰 4. Odoo Live Connectivity
-- Install **Odoo Community** (Local or Cloud).
-- In `watchers/odoo_integration.py`, update the `url`, `db`, and `password` with your real Odoo credentials.
+## 3. 🐦 LinkedIn/X/FB Real Sync
+- Ensure your Social Media notifications are sent to your **Gmail**.
+- Our `gmail_watcher_sim.py` (once connected to your real Gmail API or IMAP) will read these 'Notification Emails' and trigger the WhatsApp Alerter.
 
 ---
-**Need help with a specific step? Just ask!**
-*Your system is 90% ready, just needs the "Current" (API Keys) to flow.*
+**Ready to Launch?**
+When you run `python watchers/freelance_watcher.py`, it will now look for REAL jobs if you added the RSS link.
