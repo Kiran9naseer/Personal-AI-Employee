@@ -7,6 +7,8 @@ __pycache__/
 .DS_Store
 auth/
 whatsapp_session/
+credentials.json
+token.json
 
 # Keep only Markdown and Logic
 !/*.md

@@ -57,9 +57,14 @@ def get_real_gmail_alerts():
                             
                         from_ = msg.get("From")
                         
-                        # Filtering Logic (LinkedIn, Facebook, Upwork)
+                        # Filtering Logic (LinkedIn, Facebook, Upwork, OR an explicit TEST email)
                         sender_lower = str(from_).lower()
-                        if "linkedin" in sender_lower or "facebook" in sender_lower or "upwork" in sender_lower:
+                        subject_lower = str(subject).lower()
+                        
+                        is_social = "linkedin" in sender_lower or "facebook" in sender_lower or "upwork" in sender_lower
+                        is_test = "test fte" in subject_lower
+
+                        if is_social or is_test:
                             print(f"✅ Priority Email Detected: {subject[:50]} (From: {from_})")
                             
                             # Determine Domain
@@ -67,6 +72,8 @@ def get_real_gmail_alerts():
                             if "linkedin" in sender_lower: domain = "LinkedIn"
                             elif "facebook" in sender_lower: domain = "Facebook"
                             elif "upwork" in sender_lower: domain = "Upwork"
+                            elif is_test: domain = "TEST"
+
                             
                             # Trigger WhatsApp Bridge
                             try:
