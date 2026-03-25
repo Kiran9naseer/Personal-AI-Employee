@@ -1,29 +1,51 @@
 import os
 import time
 from datetime import datetime
+from dotenv import load_dotenv
+import pywhatkit
+
+# Load environment logic so we can securely fetch phone number
+load_dotenv(os.path.join(os.path.dirname(__file__), '../.env'))
+
+MY_WHATSAPP_NUMBER = os.getenv("MY_WHATSAPP_NUMBER")
+LOG_FILE = "./Logs/activity_log.md"
 
 def send_whatsapp_alert(message_body):
     """
-    Gold/Platinum Tier: Sends an alert to Kiran's Mobile via WhatsApp.
-    Simulation: In a real environment, this calls a WhatsApp API or MCP server.
+    Sends a real WhatsApp alert to Kiran's mobile using pywhatkit.
     """
-    print(f"📲 [WHATSAPP BRIDGE] Connecting to WhatsApp Session...")
-    time.sleep(1) # Simulate connection
+    if not MY_WHATSAPP_NUMBER or "000000000" in MY_WHATSAPP_NUMBER:
+        print("⚠️ [WHATSAPP ERROR] Please set your real MY_WHATSAPP_NUMBER (with Country Code) in the .env file.")
+        return
+        
+    print(f"📲 [WHATSAPP BRIDGE] Preparing to send real WhatsApp message to {MY_WHATSAPP_NUMBER}...")
     
-    # This represents the actual payload sent to the mobile
-    alert_payload = {
-        "to": "Kiran Naseer (Mobile)",
-        "message": f"🤖 DIGITAL FTE ALERT:\n\n{message_body}\n\nCheck Obsidian Dashboard for details.",
-        "timestamp": datetime.now().strftime("%H:%M:%S")
-    }
+    full_message = f"🤖 *DIGITAL FTE ALERT:*\n\n{message_body}\n\nCheck your computer for details."
     
-    print(f"🚀 [WHATSAPP SENT] To: {alert_payload['to']}")
-    print(f"💬 Content: \"{alert_payload['message']}\"")
+    try:
+        now = datetime.now()
+        # pywhatkit needs future time (hours, minutes) to schedule. Let's do 1 minute from now, 
+        # or use "sendwhatmsg_instantly" to send in a new active tab right away.
+        
+        # 'sendwhatmsg_instantly' opens a browser tab (if WhatsApp Web is logged in) and sends it.
+        # wait_time is how long it waits for browser to load. tab_close=True tells it to close the tab after sending.
+        pywhatkit.sendwhatmsg_instantly(
+            phone_no=MY_WHATSAPP_NUMBER,
+            message=full_message,
+            wait_time=15, 
+            tab_close=True,
+            close_time=5
+        )
+        
+        print(f"🚀 [WHATSAPP SENT SUCCESSFULLY] to {MY_WHATSAPP_NUMBER}")
+        
+    except Exception as e:
+        print(f"❌ [WHATSAPP ERROR] Failed to send real message: {e}")
     
-    # Log the notification to activity log
-    with open("./Logs/activity_log.md", "a", encoding="utf-8") as log:
-        log.write(f"- [{datetime.now().strftime('%H:%M:%S')}] 📲 WHATSAPP NOTIFICATION SENT: {message_body[:30]}...\n")
+    # Log the notification
+    with open(LOG_FILE, "a", encoding="utf-8") as log:
+        log.write(f"- [{datetime.now().strftime('%H:%M:%S')}] 📲 WHATSAPP INSTANT SENT: {message_body[:30]}...\n")
 
 if __name__ == "__main__":
-    # Test Alert
-    send_whatsapp_alert("System is live and monitoring Freelance platforms!")
+    # Test your own number by running this directly
+    send_whatsapp_alert("✅ System Integration Test: Live WhatsApp Alert Working!")
