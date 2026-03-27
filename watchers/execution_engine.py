@@ -37,7 +37,21 @@ def start_execution_engine():
                 action_type = "External Communication" if "REPLY" in content.upper() or "INVOICE" in content.upper() else "General Task"
 
                 print(f"⚙️ Executing {action_type}...")
-                time.sleep(2) # Simulate work
+                
+                # LINKEDIN AUTO-POST INTEGRATION
+                if "LINKEDIN" in filename.upper() or "POST" in filename.upper():
+                    print("🌐 LinkedIn Post detected. Sending to LinkedIn Poster...")
+                    try:
+                        import sys
+                        sys.path.append(os.path.dirname(__file__))
+                        from linkedin_poster import post_to_linkedin
+                        # Pass the content to the poster
+                        post_to_linkedin(content)
+                    except Exception as e:
+                        print(f"❌ Failed to auto-post to LinkedIn: {e}")
+                        
+                else:
+                    time.sleep(2) # Simulate work for other tasks
 
                 # Move to Done
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")

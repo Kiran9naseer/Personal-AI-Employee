@@ -28,13 +28,12 @@ def send_whatsapp_alert(message_body):
         # or use "sendwhatmsg_instantly" to send in a new active tab right away.
         
         # 'sendwhatmsg_instantly' opens a browser tab (if WhatsApp Web is logged in) and sends it.
-        # wait_time is how long it waits for browser to load. tab_close=True tells it to close the tab after sending.
+        # wait_time is how long it waits for browser to load.
         pywhatkit.sendwhatmsg_instantly(
             phone_no=MY_WHATSAPP_NUMBER,
             message=full_message,
-            wait_time=15, 
-            tab_close=True,
-            close_time=5
+            wait_time=25, 
+            tab_close=False
         )
         
         print(f"🚀 [WHATSAPP SENT SUCCESSFULLY] to {MY_WHATSAPP_NUMBER}")
