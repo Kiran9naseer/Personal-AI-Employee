@@ -72,18 +72,22 @@ def extract_email_body(email_msg):
     return ""
 
 def generate_ai_reply(sender, subject, body):
-    """Uses Gemini API to generate a smart business reply."""
+    """Uses Gemini API to Triage the email and generate a smart business reply if it's legit."""
     if not GEMINI_KEY:
-        print("⚠️ No Gemini Key found, using template reply.")
-        return "Thank you for reaching out. We have received your message and will reply soon. (Automated by Digital FTE)"
+        return "IGNORE_PROMO" # Safe fallback
     
-    prompt = f"""You are the AI Assistant for Kiran Naseer's Digital FTE (AI Automation) business. 
-You received a message from {sender}.
+    prompt = f"""You are the AI Assistant / Inbox Manager for Kiran Naseer's Digital FTE business. 
+You received a new email from: {sender}.
 Subject: {subject}
 Message Body:
 {body}
 
-Write a professional, short, and polite reply addressing their message. Do not use placeholders like [Your Name]. Sign it off as:
+TASK 1: TRIAGE
+Is this email a promotional newsletter, automated alert, spam, marketing, or from a company like foodpanda, streamlabs, canva, facebook, linkedin, etc?
+If YES, you must reply with exactly this exact word and nothing else: IGNORE_PROMO
+
+TASK 2: REPLY
+If it is from a real human making a business inquiry or sending a direct message, write a professional, short, and polite reply addressing their message. Sign it off as:
 Best regards,
 Digital FTE (On behalf of Kiran Naseer)"""
     
@@ -92,7 +96,7 @@ Digital FTE (On behalf of Kiran Naseer)"""
         return response.text.strip()
     except Exception as e:
         print(f"⚠️ AI Generation Error: {e}")
-        return "Thank you for reaching out! We have received your message. \n\nBest, \nDigital FTE"
+        return "IGNORE_PROMO"
 
 def send_email(service, to_email, subject, body_text):
     """Sends an email directly using Gmail API."""
@@ -136,18 +140,25 @@ def read_unread_emails_and_autoreply(service):
             
             # Simple check to avoid replying to our own automated messages or no-reply addresses
             if "no-reply" in sender.lower() or "noreply" in sender.lower() or "mailer-daemon" in sender.lower():
-                # Just mark as read and skip
                 service.users().messages().modify(userId='me', id=message['id'], body={'removeLabelIds': ['UNREAD']}).execute()
                 continue
                 
-            print(f"📥 Received from: {sender} | Subject: {subject}")
+            print(f"📥 Processing Mail from: {sender} | Subject: {subject}")
             
-            # --- 1. Generate Reply via Gemini AI ---
-            print("🧠 Gemini AI Brain is thinking about the perfect reply...")
+            # --- 1. AI Triage & Reply Generation ---
+            print("🧠 Gemini AI Brain analyzing if this is Promo or Real Inquiry...")
             ai_reply = generate_ai_reply(sender, subject, body)
+            
+            # AI decided this is a promotional/marketing email, DO NOT REPLY
+            if ai_reply == "IGNORE_PROMO":
+                print(f"🛑 AI Triage: Trashed Promotional/Auto Email from {sender}.")
+                # Mark as read so we don't process it again
+                service.users().messages().modify(userId='me', id=message['id'], body={'removeLabelIds': ['UNREAD']}).execute()
+                continue
+            
             reply_subject = f"Re: {subject}" if not subject.startswith("Re:") else subject
             
-            # --- 2. Automatically Send the Reply ---
+            # --- 2. Automatically Send the Reply (Only to Humans) ---
             print(f"🚀 Sending automated reply to {sender}...")
             send_email(service, sender, reply_subject, ai_reply)
             
@@ -164,14 +175,14 @@ def read_unread_emails_and_autoreply(service):
             # --- 4. WhatsApp Alert ---
             try:
                 from watchers.whatsapp_alerter import send_whatsapp_alert
-                send_whatsapp_alert(f"I just Auto-Replied to a message from {sender[:20]}!\nThe AI handled it completely.")
+                send_whatsapp_alert(f"I just Auto-Replied to an INQUIRY from {sender[:20]}!\nThe AI handled it completely. Promo emails were ignored.")
             except Exception as e:
                 pass
             
             # Log it
             if os.path.exists(LOG_FILE):
                 with open(LOG_FILE, "a", encoding="utf-8") as log:
-                    log.write(f"- [{datetime.now().strftime('%H:%M:%S')}] 🤖 FULL AUTO-REPLY: Replied to {sender} using Gemini AI.\n")
+                    log.write(f"- [{datetime.now().strftime('%H:%M:%S')}] 🤖 AUTO-REPLY SENT to human {sender}.\n")
 
     except HttpError as error:
         print(f'❌ An error occurred fetching emails: {error}')
