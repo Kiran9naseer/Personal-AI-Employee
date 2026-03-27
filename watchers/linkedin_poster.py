@@ -39,7 +39,40 @@ def post_to_linkedin(post_content):
         # Open default browser to LinkedIn with the text pre-filled
         webbrowser.open(linkedin_url)
         print("✅ Opened LinkedIn Share dialog with pre-filled content!")
+        
+        try:
+            import pyautogui
+            import time
+            print("⏳ Waiting 12 seconds for LinkedIn to load completely... (DO NOT TOUCH KEYBOARD/MOUSE)")
+            time.sleep(12)
+            
+            # LinkedIn has a universal shortcut to post the drafted text: Ctrl + Enter
+            print("🤖 Attempting to click 'Post' automatically via keyboard automation...")
+            
+            # First, bring the browser to focus by clicking exactly in the middle of your screen
+            print("🎯 Force focusing the browser...")
+            screen_width, screen_height = pyautogui.size()
+            pyautogui.click(screen_width // 2, screen_height // 2)
+            time.sleep(1)
+            
+            # Press Ctrl + Enter (LinkedIn's standard post shortcut)
+            print("🤖 Firing submit command...")
+            pyautogui.hotkey('ctrl', 'enter')
+            
+            # Fallback 2: If Ctrl+Enter fails, try Tabbing multiple times to reach 'Post'
+            time.sleep(2)
+            for _ in range(4):
+                pyautogui.press('tab')
+                time.sleep(0.2)
+            pyautogui.press('enter')
+            
+            print("🎉 Simulated sequence complete!")
+            
+        except ImportError:
+            print("⚠️ Install pyautogui (pip install pyautogui) to enable true automatic posting.")
+        
         return True
 
 if __name__ == "__main__":
-    post_to_linkedin("Hello LinkedIn! My Digital FTE AI just published this automatically.")
+    post_to_linkedin("Hello LinkedIn! My Digital FTE AI just published this automatically. 🚀")
+
