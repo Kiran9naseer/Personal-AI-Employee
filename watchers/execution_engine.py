@@ -38,20 +38,39 @@ def start_execution_engine():
 
                 print(f"⚙️ Executing {action_type}...")
                 
-                # LINKEDIN AUTO-POST INTEGRATION
+                # LOGIC INTEGRATION: Route actions based on Filename
                 if "LINKEDIN" in filename.upper() or "POST" in filename.upper():
                     print("🌐 LinkedIn Post detected. Sending to LinkedIn Poster...")
                     try:
                         import sys
                         sys.path.append(os.path.dirname(__file__))
                         from linkedin_poster import post_to_linkedin
-                        # Pass the content to the poster
                         post_to_linkedin(content)
                     except Exception as e:
                         print(f"❌ Failed to auto-post to LinkedIn: {e}")
                         
+                elif "FACEBOOK" in filename.upper() or "FB" in filename.upper():
+                    print("🟦 Facebook Post detected. Sending to Meta Poster...")
+                    try:
+                        import sys
+                        sys.path.append(os.path.dirname(__file__))
+                        from meta_poster import post_to_meta
+                        post_to_meta("Facebook", content)
+                    except Exception as e:
+                        print(f"❌ Failed to auto-post to Facebook: {e}")
+                        
+                elif "INSTAGRAM" in filename.upper() or "IG" in filename.upper():
+                    print("🟪 Instagram Post detected. Sending to Meta Poster...")
+                    try:
+                        import sys
+                        sys.path.append(os.path.dirname(__file__))
+                        from meta_poster import post_to_meta
+                        post_to_meta("Instagram", content)
+                    except Exception as e:
+                        print(f"❌ Failed to auto-post to Instagram: {e}")
+                        
                 else:
-                    time.sleep(2) # Simulate work for other tasks
+                    time.sleep(2) # Simulate work for other items
 
                 # Move to Done
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
