@@ -9,6 +9,17 @@ auth/
 whatsapp_session/
 credentials.json
 token.json
+selenium_profile/
+playwright_profile/
+whatsapp_profile/
+selenium_profile_demo/
+selenium_profile_final/
+*.html
+*.base
+*.canvas
+Logs/
+Inbox/
+Needs_Action/
 
 # Keep only Markdown and Logic
 !/*.md

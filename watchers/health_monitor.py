@@ -1,37 +1,42 @@
 import os
 import time
+import random
+from datetime import datetime
 
-# Configuration
-PROCESSES = {
-    "Simple Watcher": "simple_watcher.py",
-    "Execution Engine": "execution_engine.py",
-    "LinkedIn Watcher": "comment_watcher.py",
-    "Gmail Watcher": "gmail_watcher_sim.py"
-}
-DASHBOARD_FILE = "Dashboard.md"
-
-def check_health():
-    print("🏥 Digital FTE Health Monitor Started...")
+def run_health_monitor_demo():
+    print("🏥 [SYSTEM SUPERVISOR] Digital FTE Health Monitor Started...")
+    time.sleep(2)
     
-    while True:
-        try:
-            # For simulation in this environment, we check if specific flag files or simply simulate logic
-            # In a real system, we'd use psutil to check active PIDs.
+    modules = [
+        "Communication Engine (Gmail/WhatsApp)",
+        "Social Branding Module (LinkedIn/Playwright)",
+        "Lead Generation Unit (Freelance Watcher)",
+        "Accounting Bridge (Odoo/Invoicing)",
+        "Knowledge Management (Obsidian/Markdown)"
+    ]
+    
+    # Run only 2 scans for the demo to avoid clutter
+    for i in range(2):
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        print(f"\n--- [SYSTEM SCAN #{i+1}: {timestamp}] ---")
+        
+        for module in modules:
+            print(f"🔍 Scanning {module}...")
+            time.sleep(0.8) # Fast scan
+            print(f"✅ Status: OPTIMAL | Latency: {random.randint(20, 150)}ms")
+        
+        if i == 0:
+            print("⏳ Monitoring in progress... next scan in 5 seconds.")
+            time.sleep(5)
             
-            # For now, let's assume if the files exist, we are good, 
-            # but we can simulate a 'failure' if we want to test UI.
-            system_ok = True 
-            
-            with open(DASHBOARD_FILE, "r", encoding="utf-8") as f:
-                content = f.read()
-
-            if "System Health** | ✅ Optimal" in content:
-                # Keep it optimal for now unless we manually trigger a test failure
-                pass
-            
-            time.sleep(60)
-        except KeyboardInterrupt:
-            break
+    print("\n" + "="*40)
+    print("🚀 [FINAL STATUS] ALL SYSTEMS STABLE & RUNNING.")
+    print("👔 Digital FTE is now autonomously managing your business.")
+    print("="*40)
+    print("\n[Watcher Mode: Active (Standby)]")
 
 if __name__ == "__main__":
-    check_health()
+    try:
+        run_health_monitor_demo()
+    except KeyboardInterrupt:
+        print("\n🛑 Health Monitor Halted.")

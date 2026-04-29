@@ -2,7 +2,15 @@ import os
 import sys
 import base64
 import time
+import logging
 from datetime import datetime
+import email
+from email.message import EmailMessage
+
+# Suppress noisy gRPC/ALTS warnings from terminal output
+os.environ['GRPC_VERBOSITY'] = 'ERROR'
+os.environ['GRPC_TRACE'] = ''
+logging.getLogger('absl').setLevel(logging.ERROR)
 import email
 from email.message import EmailMessage
 
@@ -29,7 +37,7 @@ LOG_FILE = "./Logs/activity_log.md"
 GEMINI_KEY = os.getenv("GEMINI_API_KEY")
 if GEMINI_KEY:
     genai.configure(api_key=GEMINI_KEY)
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('gemini-2.0-flash')
 
 def get_gmail_service():
     """Authenticates using OAuth 2.0 and returns the Gmail API service."""
@@ -147,7 +155,9 @@ def read_unread_emails_and_autoreply(service):
             print("🧠 Gemini AI Brain is thinking about the perfect reply...")
             ai_reply = generate_ai_reply(sender, subject, body)
             
+            # Sanitize Subject (Remove any newlines that cause ValueError)
             reply_subject = f"Re: {subject}" if not subject.startswith("Re:") else subject
+            reply_subject = reply_subject.replace("\r", "").replace("\n", "").strip()
             
             # --- 2. Automatically Send the Reply ---
             print(f"🚀 Sending automated reply to {sender}...")
@@ -165,10 +175,16 @@ def read_unread_emails_and_autoreply(service):
             
             # --- 4. WhatsApp Alert ---
             try:
-                from watchers.whatsapp_alerter import send_whatsapp_alert
+                # Add root to sys path to find whatsapp_alerter.py
+                import sys
+                root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+                if root_path not in sys.path:
+                    sys.path.append(root_path)
+                
+                from whatsapp_alerter import send_whatsapp_alert
                 send_whatsapp_alert(f"I just Auto-Replied to a message from {sender[:20]}!\nThe AI handled it completely.")
             except Exception as e:
-                pass
+                print(f"⚠️ WhatsApp Alert failed: {e}")
             
             # Log it
             if os.path.exists(LOG_FILE):

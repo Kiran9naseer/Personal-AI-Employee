@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "84eeaebc107802f1",
+        "id": "40a979d179c775a1",
         "type": "tabs",
         "children": [
           {
-            "id": "9fc9034f74cef54a",
+            "id": "c371a28a672c08cd",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Company_Handbook.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Company_Handbook"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -78,7 +74,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "d8f88ad26a160377",
@@ -183,43 +180,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "9fc9034f74cef54a",
+  "active": "c371a28a672c08cd",
   "lastOpenFiles": [
-    "Inbox/Freelance/Freelance_Job_20260302_003301.md",
-    "Inbox/Freelance/Freelance_Job_20260301_233853.md",
-    "Inbox/Freelance/Freelance_Job_20260301_003254.md",
-    "Inbox/Freelance/Freelance_Job_20260228_224433.md",
-    "Inbox/Freelance/Freelance_Job_20260225_225604.md",
-    "Inbox/Freelance/Freelance_Job_20260225_223801.md",
-    "Inbox/Freelance/Freelance_Job_20260225_222801.md",
-    "Inbox/Freelance/Freelance_Job_20260225_155816.md",
-    "Inbox/Freelance/Freelance_Job_20260225_154816.md",
-    "Inbox/Freelance/Freelance_Job_20260225_153816.md",
-    "Inbox/Freelance/Freelance_Job_20260225_004613.md",
-    "Inbox/Freelance/Freelance_Job_20260225_003613.md",
-    "Platinum_Strategy.md",
-    "Strategic_Rules.md",
+    "whatsapp_profile/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/001582.log",
+    "whatsapp_profile/lockfile",
+    "whatsapp_profile/BrowserMetrics/BrowserMetrics-69F11A83-4F54.pma",
+    "whatsapp_profile/CrashpadMetrics.pma",
+    "whatsapp_profile/Default/Download Service/EntryDB/LOG.old~RF83827e50.TMP",
+    "whatsapp_profile/Default/AutofillAiModelCache/LOG.old~RF83825dd8.TMP",
+    "whatsapp_profile/Default/optimization_guide_hint_cache_store/LOG.old~RF83825d7a.TMP",
+    "whatsapp_profile/Default/blob_storage/3109ae13-82de-4f64-aaaa-4ab729e630cc",
+    "whatsapp_profile/Default/Sessions/Tabs_13421882189794817",
+    "whatsapp_profile/Default/Sessions/Session_13421882189477194",
+    "whatsapp_profile/Default/Network/2b604625-139f-4476-af54-6eb175907b08.tmp",
+    "Inbox/WhatsApp/LinkedIn_Lead_Sarah_Khan_20260223_073445.md",
+    "Inbox/WhatsApp/LinkedIn_Lead_John_Doe_20260224_002640.md",
+    "Inbox/WhatsApp/LinkedIn_Lead_Sarah_Khan_20260224_011139.md",
+    "Inbox/Freelance/Freelance_Job_20260424_005508.md",
+    "Logs/activity_log.md",
+    "Needs_Action/Draft_Proposal_RealEstate_AI.md",
+    "Inbox/Freelance/Freelance_Job_20260224_223939.md",
+    "2026-04-15.md",
+    "Untitled.canvas",
+    "Dashboard.md",
+    "Inbox/Freelance/Freelance_Job_20260415_191323.md",
+    "Inbox/Freelance/Freelance_Job_20260415_191023.md",
+    "Inbox/Freelance/Freelance_Job_20260415_190847.md",
+    "Inbox/Freelance/Freelance_Job_20260415_185318.md",
+    "Inbox/Freelance/Freelance_Job_20260415_185123.md",
+    "Inbox/Freelance/Freelance_Job_20260415_184742.md",
+    "Inbox/Freelance/Freelance_Job_20260415_184714.md",
+    "Inbox/Freelance/Freelance_Job_20260415_184647.md",
+    "Inbox/Freelance/Freelance_Job_20260415_184619.md",
+    "Inbox/Freelance/Freelance_Job_20260415_184547.md",
+    "Needs_Action/AutoReplied_20260412_155055.md",
+    "Needs_Action/AutoReplied_20260412_154642.md",
+    "Needs_Action/AutoReplied_20260412_153727.md",
     "Profile.md",
-    "Implementation_Guide.md",
-    "Templates/Template_Plan.md",
-    "Inbox/Freelance/Freelance_Job_20260225_002613.md",
-    "Inbox/Freelance/Freelance_Job_20260225_001613.md",
-    "claude/workflows",
-    "claude/skills/digital_fte_core/SKILL.md",
-    "claude/skills/accounting_odoo/SKILL.md",
-    "claude/skills/digital_fte_core",
-    "claude/skills/accounting_odoo",
-    "claude/skills",
-    "claude/agent_metadata.json",
-    "claude",
-    "Inbox/Freelance/Freelance_Job_20260225_000613.md",
-    "Inbox/Freelance/Freelance_Job_20260224_235613.md",
-    "Inbox/Freelance/Freelance_Job_20260224_234613.md",
-    "Inbox/Freelance/Freelance_Job_20260224_231939.md",
-    "Inbox/Freelance/Freelance_Job_20260224_230939.md",
-    "Inbox/Instagram",
-    "Inbox/Facebook",
-    "Inbox/Twitter",
-    "watchers/__pycache__/whatsapp_alerter.cpython-313.pyc"
+    "Needs_Action/AutoReplied_20260412_021218.md",
+    "Needs_Action/AutoReplied_20260412_020911.md"
   ]
 }
